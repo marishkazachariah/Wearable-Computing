@@ -1,0 +1,57 @@
+/*
+Assignment Two: Sensing On The Body - Apathomatoe Meter (based on Apathy)
+Marishka Zachariah
+GDES 3B16 Wearable Computing S01
+OCAD University
+Created on October 5-7, 2014
+Based on:
+
+programming the LilyPad Arduino: sensing (sensors), http://web.media.mit.edu/~leah/LilyPad/08_sensors.html
+*/
+/*
+My sketch uses a series of red and green LEDs with two seperate switches
+to indicate emotion of "happiness" or "Sadness" which is drawn on the shirt.
+Both switches are part of an incomplete/open circuit so when it's closed, they
+either activate the red or green LEDs.
+*/
+
+
+int ledPin = 5; 	// green LED is connected to digital pin 5
+int switchPin = 11;	// switch with upward arrow connected to digital pin 11
+int switchValue;	// a variable to keep track of when "up" switch is pressed
+
+int ledPinB = 6;        // red LED is connected to digital pin 6
+int switchPinB = 9;     // switch with downward arrow connected to digital pin 9
+int switchValueB;       // a variable to keep track of when "down" switch is pressed
+
+ 	 
+void setup()	 
+{	 
+         pinMode(ledPin, OUTPUT);	// sets the ledPin to be an output
+         pinMode(switchPin, INPUT);	// sets the switchPin to be an input
+         digitalWrite(switchPin, HIGH);	// sets the default (unpressed) state of switchPin to HIGH
+
+         pinMode(ledPinB, OUTPUT);	// sets the ledPin to be an output
+         pinMode(switchPinB, INPUT);	// sets the switchPin to be an input
+         digitalWrite(switchPinB, HIGH);
+
+}	 
+ 	 
+void loop()	// run over and over again
+{	 
+          switchValue = digitalRead(switchPin);	// check to see if the up switch is pressed
+          if (switchValue == LOW) {	// if the switch is pressed then,
+                    digitalWrite(ledPin, HIGH);	// turn the green LED on
+          }	 
+          else {	// otherwise,
+                    digitalWrite(ledPin, LOW);	// turn the green LED off
+          }	 
+          
+          switchValueB = digitalRead(switchPinB);	// check to see if the down switch is pressed
+          if (switchValueB == LOW) {	// if the switch is pressed then,
+                    digitalWrite(ledPinB, HIGH);	// turn the red LED on
+          }	 
+          else {	// otherwise,
+                    digitalWrite(ledPinB, LOW);	// turn the red LED off
+          }	 
+}
