@@ -1,0 +1,186 @@
+/*
+Assignment 3: Actuators on the Body - Video Game Sound Shirt (Nostalgia and Speaker)
+Marishka Zachariah
+GDES 3B16 | Wearable Computing
+OCAD University
+Created on April 27, 2014
+Based on:
+Lilypad's Switch Code: http://lilypadarduino.org/?page_id=635
+Arduino playground: Tone: http://arduino.cc/en/Tutorial/tone
+Controlling a piezo speaker: http://blog.oscarliang.net/using-switch-to-control-piezo-speaker/
+*/
+
+
+
+#include "pitches.h"
+int speakerPin = 9;	// speaker connected to digital pin 9
+//int speakerPin2 = 10;	
+int switchPin = 5;	// switch connected to digital pin 5
+//int switchPin2 = 6
+//int switchValue2;
+
+int switchValue;
+
+int bringPressed = 0;
+int buttonState = 0;
+
+void setup() {	 
+  pinMode(speakerPin, OUTPUT);	// sets the speakerPin to be an output
+  //pinMode(speakerPin2, OUTPUT);
+  pinMode(switchPin, INPUT);
+  //pinMode(switchPin2, INPUT);	// sets the switchPin to be an input
+  digitalWrite(switchPin, HIGH);
+  //digitalWrite(switchPin2, HIGH);	// sets the default (unpressed) state 
+}	 
+
+
+void beep (unsigned char speakerPin, int frequencyInHertz, long timeInMilliseconds)     // the sound producing function
+{	 	 
+  int x;      
+  long delayAmount = (long)(1000000/frequencyInHertz);
+  long loopTime = (long)((timeInMilliseconds*1000)/(delayAmount*2));
+  for (x=0;x<loopTime;x++)    
+  {    
+    digitalWrite(speakerPin,HIGH);
+    delayMicroseconds(delayAmount);
+    digitalWrite(speakerPin,LOW);
+    delayMicroseconds(delayAmount);
+  }    
+  delay(20);	 
+}	 
+
+void loop()	// run over and over again
+{	
+  switchValue = digitalRead(switchPin);	// check to see if the switch is pressed
+  if (switchValue == LOW) {	// if the switch is pressed then,
+    beep(speakerPin, NOTE_D5, 100);  //   beep( -PIN OF SPEAKER-, -THE NOTE WANTING TO BE PLAYED-, -DURATION OF THE NOTE IN MILISECONDS- )
+    delay(80);
+    beep(speakerPin, NOTE_F5, 100); 
+    delay(80);
+    beep(speakerPin, NOTE_D6, 200); 
+    delay(250);
+
+    beep(speakerPin, NOTE_D5, 100); 
+    delay(80);
+    beep(speakerPin, NOTE_F5, 100); 
+    delay(80);
+    beep(speakerPin, NOTE_D6, 200);
+    delay(250);
+
+    beep(speakerPin, NOTE_E6, 200); 
+    delay(200);
+    beep(speakerPin, NOTE_F6, 100); 
+    delay(100);
+    beep(speakerPin, NOTE_E6, 100); 
+    delay(80);
+    beep(speakerPin, NOTE_F6, 100); 
+    delay(80);
+    beep(speakerPin, NOTE_E6, 100); 
+    delay(80);
+    beep(speakerPin, NOTE_C6, 100); 
+    delay(80);
+    beep(speakerPin, NOTE_A5, 100); 
+    delay(300);
+
+    beep(speakerPin, NOTE_A5, 200); 
+    delay(100);
+    beep(speakerPin, NOTE_D5, 200); 
+    delay(100);
+    beep(speakerPin, NOTE_F5, 100); 
+    delay(100);
+    beep(speakerPin, NOTE_G5, 100); 
+    delay(100);
+    beep(speakerPin, NOTE_A5, 100); 
+    delay(500);
+
+    beep(speakerPin, NOTE_A5, 200); 
+    delay(100);
+    beep(speakerPin, NOTE_D5, 200); 
+    delay(100);
+    beep(speakerPin, NOTE_F5, 100); 
+    delay(100);
+    beep(speakerPin, NOTE_G5, 100); 
+    delay(100);
+    beep(speakerPin, NOTE_E5, 100); 
+    delay(500);
+
+
+
+    beep(speakerPin, NOTE_D5, 100); 
+    delay(80);
+    beep(speakerPin, NOTE_F5, 100); 
+    delay(80);
+    beep(speakerPin, NOTE_D6, 200); 
+    delay(250);
+
+    beep(speakerPin, NOTE_D5, 100); 
+    delay(80);
+    beep(speakerPin, NOTE_F5, 100); 
+    delay(80);
+    beep(speakerPin, NOTE_D6, 200);
+    delay(250);
+
+    beep(speakerPin, NOTE_E6, 200); 
+    delay(200);
+    beep(speakerPin, NOTE_F6, 100); 
+    delay(100);
+    beep(speakerPin, NOTE_E6, 100); 
+    delay(80);
+    beep(speakerPin, NOTE_F6, 100); 
+    delay(80);
+    beep(speakerPin, NOTE_E6, 100); 
+    delay(80);
+    beep(speakerPin, NOTE_C6, 100); 
+    delay(80);
+    beep(speakerPin, NOTE_A5, 100); 
+    delay(300);
+
+    beep(speakerPin, NOTE_A5, 200); 
+    delay(100);
+    beep(speakerPin, NOTE_D5, 200); 
+    delay(100);
+    beep(speakerPin, NOTE_F5, 100); 
+    delay(100);
+    beep(speakerPin, NOTE_G5, 100); 
+    delay(100);
+    beep(speakerPin, NOTE_A5, 300);
+    delay(100);
+    beep(speakerPin, NOTE_A5, 200);
+    delay(100);
+    beep(speakerPin, NOTE_D5, 300);
+    delay(2000);	
+  }	 
+// switchValue2 = digitalRead(switchPin2);	// check to see if the switch is pressed
+//  if (switchValue2 == LOW) {
+// void(song);
+//    	
+//  }	
+
+//void song()  //bass section/accordion part is played
+//{
+//  beep(speakerPin2, NOTE_A5, 100); 
+//  delay(200);
+//  beep(speakerPin2, NOTE_A5, 100); 
+//  delay(500);
+//  beep(speakerPin2, NOTE_B5, 200); 
+//  delay(600);
+//  
+//   beep(speakerPin2, NOTE_C6, 100);  
+//  delay(200);
+//  beep(speakerPin2, NOTE_C6, 100); 
+//  delay(500);
+//  beep(speakerPin2, NOTE_B5, 200); 
+//  delay(600);
+//}
+
+  } 
+
+
+
+
+
+
+
+
+
+
